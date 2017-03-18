@@ -1,0 +1,71 @@
+﻿@model Riggen.Models.ContactRequest
+@Html.Partial("_AdminSidebar")
+@{
+    
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/ContactForm.css" rel="stylesheet" />
+
+
+    <title></title>
+</head>
+<body>
+    <div class="h2">
+        &ensp;
+    </div>
+
+    <h3 style="font-weight: bold">@ViewBag.Message</h3>
+
+    <div style="font-weight: bold; font-size: 16px;">
+        Vi är ett gäng glada amatör-online-pokerspelare som tycker att det ibland är lite tråkigt vid borden. <br />
+        Därför startade vi en "privat-turnering" med det fantastiska namnet *Riggen*. <br />
+        Meningen är att stämningen ska vara uppsluppen, no bad feelings, utan bara ha roligt när vi spelar. <br />
+        Därför bestämde vi också att "turren" ska gå på fredagar så man kan ta ett glas eller 2.
+        <br /><br />
+        I Riggenturneringen kommer pengarna i 2:a-hand och "att ha roligt" i första hand!!
+        <br /><br />
+        Ett annat populärt "namn" på *Riggen* är också *Gula chatten*, eftersom chattrutan är gul hela tiden. <br />
+        Dealern får knappt en syl i vädret.
+        <br /><br />
+        Ansökan att vara med i det exlusiva *Riggen-gänget* kan göras via formuläret nedanför på denna sidan,<br />
+         eller via forumet här på hemsidan.<br />
+        (just nu är det dock stängt för "nya" medlemmar)
+        <br /><br />
+        Med vänliga pokerhälsningar från webmaster...
+        <br /><br /><br />
+    </div>
+    <div><img src="~/Content/images/pokerwhiskey.jpg" class="img-responsive" /></div>
+    <br />
+
+    <div class="panel panel-success">
+        <div class="container-fluid profile-partial text-center"><h4>Kontakta oss!</h4></div>
+        <div class="panel-body">
+
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <div class="form-group">
+                    <label>Ditt namn:</label><br />
+                    @Html.TextBoxFor(x => x.Name, new { @class = "formcontrol" })
+                </div>
+                <div class="form-group">
+                    <label>Din e-post:</label><br />
+                    @Html.TextBoxFor(x => x.Email, new { @class = "formcontrol" })
+                </div>
+                <div class="form-group">
+                    <label>Meddelande/Fråga</label><br />
+                    @Html.TextBoxFor(x => x.SupportRequest, new { @class = "formcontrol1" })
+                </div>
+                <div class="text-center">
+                    <input class="btn container-fluid profile-partial" type="submit"
+                           value="Submit Question" />
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
