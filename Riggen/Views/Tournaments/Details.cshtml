@@ -1,0 +1,42 @@
+﻿@model Riggen.Models.TournamentModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TournamentModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TournamentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TournamentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TournamentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TournamentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TournamentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TournamentType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TournamentId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

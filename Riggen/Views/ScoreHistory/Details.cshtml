@@ -1,0 +1,35 @@
+﻿@model Riggen.Models.ScoreHistoryModel
+@Html.Partial("_AdminSidebar")
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ScoreHistoryModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScoreOfYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScoreOfYear)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ScoreHistoryId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

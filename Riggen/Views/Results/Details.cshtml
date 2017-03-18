@@ -1,0 +1,51 @@
+﻿@model Riggen.Models.ResultModel
+@Html.Partial("_AdminSidebar")
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ResultModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResultHistory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResultHistory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalScore)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ResultId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,37 @@
+﻿@model Riggen.Models.GuestUserModel
+@Html.Partial("_AdminSidebar")
+@{
+    ViewBag.Title = "DeleteGuest";
+}
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3>Ta bort gästspelare</h3>
+
+            <h4>Är du säker på att du vill ta bort gästspelaren?</h4>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GuestUserName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.GuestUserName)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Ta bort" class="btn btn-danger" /> |
+                        @Html.ActionLink("Tillbaks till Listan", "Guest")
+                    </div>
+                }
+            </div>
+            </div>
+        </div>
+    </div>

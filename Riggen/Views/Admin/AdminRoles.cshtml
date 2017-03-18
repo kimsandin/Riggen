@@ -1,0 +1,51 @@
+﻿@Html.Partial("_AdminSidebar")
+@{
+    ViewBag.Title = "";
+}
+
+<h2>&nbsp;</h2>
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h4>Välj Användare</h4>
+            @using (Html.BeginForm("CreateAdmin", "Admin", FormMethod.Post))
+            {
+
+                <div>
+
+                    @Html.DropDownList("userName", null, htmlAttributes: new { @class = "form-control" })<br />
+                    <input type="submit" class="btn btn-success" value="Skapa Admin »" />
+                </div>
+
+                    <small>*Rollen aktiveras vid nästa inloggning av valde användaren!</small>
+
+                    <h4>Admin Lista</h4>
+                    <table>
+
+                        
+                        @foreach (var admin in (ViewBag.Admins as List<Riggen.Models.ApplicationUser>))
+                        {
+                            <tr>
+                                <td>@admin.UserName</td><td>&nbsp;</td>
+                                @if (admin.UserName == "PoK6166" || admin.UserName == "SSKforever")
+	                            {
+		                             <td>Kan ej tas bort</td>          
+                                }
+                                else
+                                {
+                                    <td>@Html.ActionLink("Ta bort rollen", "DeleteAdmin", new { id = admin.Id })</td>
+                                }
+                            </tr>
+                        }
+
+                    </table>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+
+

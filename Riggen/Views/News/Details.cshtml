@@ -1,0 +1,35 @@
+﻿@model Riggen.Models.NewsModel
+@Html.Partial("_AdminSidebar")
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NewsModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfNews)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfNews)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NewsId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

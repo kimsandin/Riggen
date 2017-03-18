@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Riggen.Models.GuestUserModel>
+@Html.Partial("_AdminSidebar")
+@{
+    ViewBag.Title = "Guest";
+}
+
+<h2>Gästspelare</h2>
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <p>
+                <button class="btn btn-success" type="button" onclick="location.pathname = 'Admin/CreateGuest';">Gästspelare <i class="fa fa-plus"></i></button>
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GuestUserName)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GuestUserName)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("DeleteGuest", "Admin", new { id = item.GuestUserId })" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Ta bort" type="button" style=margin-left 40px;"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+            @section scripts
+{
+                <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+                <script src="~/Scripts/bootstrap.js"></script>
+                <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+
+                <script>
+        @*Script to display tooltip about the buttons on mouseover*@
+                    $(function () {
+                        $('[data-toggle="tooltip"]').tooltip()
+                    })
+
+                    @*Script to open a modal wit info of the chosen resource*@
+                    var TeamDetailPostBackURL = '/Resources/Details';
+                    $(function () {
+                        $(".ResourceInfo").click(function () {
+                            $('#ResourceInfoPopup').modal('toggle');
+                            var $buttonClicked = $(this);
+                            var id = $buttonClicked.attr('data-id');
+                            var options = { "backdrop": "static", keyboard: true };
+                            $.ajax({
+                                type: "GET",
+                                url: TeamDetailPostBackURL,
+                                contentType: "application/json; charset=utf-8",
+                                data: { "Id": id },
+                                datatype: "json",
+                                success: function (data) {
+                                    debugger;
+                                    $('#myModalContent').html(data);
+                                },
+                                error: function () {
+                                    alert("Dynamic content load failed.");
+                                }
+                            });
+                        });
+                        $(document).keyup(hideModal);
+
+                        @*Script to close the modal*@
+                        function hideModal(e) {
+                            if (e.keyCode == 27) {
+                                window.location.hash = "#";
+                            } else if (e.type === 'click') {
+                                window.location.hash = "#";
+                            }
+                            $('#myModal').remove();
+                        }
+
+                        $('.item-modal').click(function () {
+
+                        });
+                        $(".overlay").click(function () {
+                            window.location.hash = "#";
+                        });
+
+                        $("#closebtn").click(function () {
+                            $('#alertModalOuter').fadeOut(400, function () {
+                                $('#myModal').remove();
+                            });
+                            $('#myModal').modal('hide');
+                        });
+                    });
+
+                </script>
+
+                <script type="text/javascript">
+                    document.getElementById("empty").onclick = function () {
+                        myEmptyFunction()
+                    };
+
+                    function myEmptyFunction() {
+                        document.getElementById("empty").innerText = "";
+                    }
+
+
+                </script>
+
+            }

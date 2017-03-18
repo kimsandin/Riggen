@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Riggen.Models.ResultModel>
+@Html.Partial("_AdminSidebar")
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResultHistory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalScore)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResultHistory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalScore)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ResultId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ResultId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ResultId })
+        </td>
+    </tr>
+}
+
+</table>
